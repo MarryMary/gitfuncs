@@ -1,3 +1,4 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
 function git-back(){
     git_hash=$(git rev-parse HEAD)
     git revert ${git_hash}
@@ -12,8 +13,8 @@ function git-push(){
     git_now_branch=$(git branch --contains | cut -d " " -f 2)
     echo "Your now branch is ${git_now_branch}, can I stage and push changes to a remote repository with the same name? [Y/N]"
     read y_or_n
-    if [ {y_or_n = "Y"} || {y_or_n = "y"} ]; then
-        if [ $# = 0]; then
+    if [ y_or_n == "Y" || y_or_n == "y" ]; then
+        if [ $# == 0 ]; then
 	    echo "Please tell me your commit comment: "
             read commit_comment
         else
