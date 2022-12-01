@@ -1,4 +1,3 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
 function git-back(){
     git_hash=$(git rev-parse HEAD)
     git revert ${git_hash}
